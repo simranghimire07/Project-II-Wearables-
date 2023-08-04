@@ -1,0 +1,39 @@
+{
+  "name": "wearables",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix ./client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@emailjs/browser": "^3.11.0",
+    "bcrypt": "^5.1.0",
+    "braintree": "^3.16.0",
+    "coinmarketcap": "^0.2.0",
+    "colors": "^1.4.0",
+    "concurrently": "^8.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-formidable": "^1.2.0",
+    "jsonwebtoken": "^9.0.0",
+    "khalti-checkout-web": "^2.2.0",
+    "mongoose": "^5.13.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.22",
+    "react-icons": "^4.8.0",
+    "slugify": "^1.6.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.1.0",
+    "reinstall-node-modules": "^2.0.0"
+  }
+}

@@ -2,7 +2,7 @@ import {Routes, Route} from 'react-router-dom';
 import HomePage from './pages/HomePage';
 //import Category from './pages/Category';
 import NewArrival from './pages/NewArrival';
-import Register from './pages/Auth/Register';
+// import Register from './pages/Auth/Register';
 //import Cart from './pages/Cart';
 import Pagenotfound from './pages/Pagenotfound';
 //import Header from './components/Layout/Header';
@@ -60,7 +60,7 @@ function App() {
         <Route path='admin/orders' element ={<AdminOrders/>} />
         <Route path='/newArrival' element = {<NewArrival/>}  />
         {/* <Route path='/category' element = {<Category/>}  /> */}
-        <Route path='/register' element = {<Register/>} />
+        {/* <Route path='/register' element = {<Register/>} /> */}
         <Route path='/login' element = {<Login/>} />
         {/* <Route path='/cart' element = {<Cart/>} /> */}
         <Route path='/contact' element = {<Contact/>} />

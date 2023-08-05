@@ -16,17 +16,17 @@ connectDB();
 //rest object
 const app = express();
 
-// app.use(cors()); // CORS middleware should be used before other middleware
-// app.use(express.json());
-// app.use(morgan('dev'));
+ app.use(cors()); // CORS middleware should be used before other middleware
+app.use(express.json());
+app.use(morgan('dev'));
 
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-//   res.setHeader('Access-Control-Allow-Credentials', true);
-//   next();
-// });
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  next();
+});
 
 app.get('/',(req,res)=> {
     res.send("<h1>Wearables</h1>");
@@ -36,8 +36,8 @@ app.get('/',(req,res)=> {
 
 
 // app.use(cors());
-app.use(express.json());
-app.use(morgan('dev'));
+// app.use(express.json());
+// app.use(morgan('dev'));
 
 //routes
 

@@ -4,6 +4,8 @@
   "description": "",
   "main": "server.js",
   "type": "module",
+  "proxy":"http://localhost:8080/",
+  
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",

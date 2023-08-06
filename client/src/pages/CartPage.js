@@ -47,16 +47,16 @@ const CartPage = () => {
       console.log(error);
     }
   };
-  const checkout = new KhaltiCheckout(config);
+  // const checkout = new KhaltiCheckout(config);
 
-  const buttonStyles = {
-    backgroundColor: "purple",
-    padding: "10px",
-    color: "white",
-    cursor: "pointer",
-    fontWeight: "bold",
-    border: "1px solid white",
-  };
+  // const buttonStyles = {
+  //   backgroundColor: "purple",
+  //   padding: "10px",
+  //   color: "white",
+  //   cursor: "pointer",
+  //   fontWeight: "bold",
+  //   border: "1px solid white",
+  // };
 
   // const verifyCheckout =
    
@@ -211,8 +211,9 @@ const CartPage = () => {
                 )}
               </div> */}
 
-              {/* Khalti */}
+              {/* Khalti
               <div>
+                < Sample totalPrice = {totalPrice()}/>
                     <button
                         onClick={() => checkout.show({ amount: 10000 })}
                         style={buttonStyles}
@@ -221,7 +222,7 @@ const CartPage = () => {
                     </button>
                 </div>
         
-              {/* Khalti */}
+              Khalti */}
 
             </div>
           </div>

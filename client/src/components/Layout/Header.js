@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import {CgShoppingCart} from 'react-icons/cg';
 import { useAuth } from '../../context/auth';
 import toast from "react-hot-toast";
@@ -16,6 +16,7 @@ import {Badge} from 'antd';
 const Header = () => {
     const [auth, setAuth] = useAuth();
     const [Cart]= useCart();
+    const navigate = useNavigate;
     const categories = useCategory();
     const handleLogout =() => {
         setAuth({
@@ -24,6 +25,8 @@ const Header = () => {
             token:''
         });
         localStorage.removeItem('auth');
+        localStorage.removeItem('cart');
+        navigate('/login')
         toast.success("Logout Successfully");
     };
   return (

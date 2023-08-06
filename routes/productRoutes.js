@@ -5,7 +5,7 @@ import {
   // braintreeTokenController,
   createProductController,
   deleteProductController,
-  frequentlyPurchaseProductController,
+  // frequentlyPurchaseProductController,
   getProductController,
   getSingleProductController,
   // khaltiPaymentController,
@@ -69,7 +69,7 @@ router.get("/search/:keyword", searchProductController);
 router.get("/related-product/:pid/:cid", realtedProductController);
 
 //Frequently purchase
-router.get("/frequently-purchase-product/:uid/", frequentlyPurchaseProductController);
+// router.get("/frequently-purchase-product/:uid/", frequentlyPurchaseProductController);
 
 //category wise product
 router.get("/product-category/:slug", productCategoryController);

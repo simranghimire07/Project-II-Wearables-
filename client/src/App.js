@@ -28,7 +28,7 @@ import Categories from './pages/Categories';
 import CategoryProduct from './pages/CategoryProduct';
 import CartPage from './pages/CartPage';
 import AdminOrders from './pages/Admin/AdminOrders';
-
+import Success from './pages/Success';
 
 
 function App() {
@@ -65,6 +65,7 @@ function App() {
         {/* <Route path='/cart' element = {<Cart/>} /> */}
         <Route path='/contact' element = {<Contact/>} />
         <Route path='/about' element = {<About/>} />
+        <Route path='/success' element = {<Success/>} />
         <Route path= '*' element = {<Pagenotfound/>} />
       </Routes>
     </>

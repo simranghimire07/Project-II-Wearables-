@@ -6,6 +6,7 @@ import authRoutes from './routes/authRoute.js';
 import categoryRoutes from './routes/categoryRoutes.js';
 import productRoutes from './routes/productRoutes.js';
 import cors from 'cors';
+import axios from "axios";
 
 
 
@@ -33,7 +34,37 @@ app.get('/',(req,res)=> {
     
 });
 
+app.post("/khalti-api", async (req, res) => {
+    const payload = req.body;
+    const khaltiResponse = await axios.post(
+      "https://a.khalti.com/api/v2/epayment/initiate/",
+      payload,
+      {
+        headers: {
+          Authorization: `key 0d852f9a28c742a7b37ea6349ba9bb84`,
+        },
+      }
+    );
+  
+    if (khaltiResponse) {
+      res.json({
+        success: true,
+        data: khaltiResponse?.data,
+      });
+    } else {
+      res.json({
+        success: false,
+        message: "something went wrong!",
+      });
+    }
+  });
 
+  app.get("/test", (req, res) => {
+    res.send({
+      status: 200,
+      message: "Test successful",
+    });
+  });
 
 // app.use(cors());
 // app.use(express.json());

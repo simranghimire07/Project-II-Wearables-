@@ -9,8 +9,6 @@ import SearchInput from './../Form/SearchInput';
 import useCategory from '../../hooks/useCategory';
 import { useCart } from '../../context/cart';
 import {Badge} from 'antd';
-//import Cart from './../../pages/Cart';
-
 
 
 const Header = () => {
@@ -45,7 +43,7 @@ const Header = () => {
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <Link to='/' className="navbar-brand">
                 Wearables
-                    {/* Wearables<i className='fab fa-typo3' /> */}
+                    
                 </Link>
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                    <SearchInput />
@@ -88,14 +86,7 @@ const Header = () => {
                     </li>
                     {
                         !auth.user ? (<>
-                        {/* <li className="nav-item">
-                        <NavLink    
-                             to='/register' 
-                            className="nav-link" 
-                            >
-                                Sign Up
-                        </NavLink>
-                    </li> */}
+                       
                     <li className="nav-item">
                         <NavLink    
                              to='/login' 
@@ -154,10 +145,7 @@ const Header = () => {
                     </li>
                     
                 </ul>
-                {/* <form className="d-flex" role="search">
-                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button className="btn btn-outline-success" type="submit">Search</button>
-                </form> */}
+                
                 </div>
             </div>
         </nav>

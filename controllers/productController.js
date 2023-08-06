@@ -4,19 +4,11 @@ import orderModel from "../models/orderModel.js";
 
 import fs from "fs";
 import slugify from "slugify";
-// import braintree from "braintree";
 import dotenv from "dotenv";
 import Khalti from "khalti-checkout-web";
 
 dotenv.config();
 
-//payment gateway
-// var gateway = new braintree.BraintreeGateway({
-//   environment: braintree.Environment.Sandbox,
-//   merchantId: process.env.BRAINTREE_MERCHANT_ID,
-//   publicKey: process.env.BRAINTREE_PUBLIC_KEY,
-//   privateKey: process.env.BRAINTREE_PRIVATE_KEY,
-// });
 
 
 
@@ -310,30 +302,30 @@ export const realtedProductController = async (req, res) => {
 };
 
 // frequently purchase
-export const frequentlyPurchaseProductController = async (req, res) => {
-  try {
-    const { uid } = req.params;
-    const products = await productModel
-      .find({
-        // category: cid,
-        _id: { $ne: uid },
-      })
-      .select("-photo")
-      .limit(3)
-      .populate("category");
-    res.status(200).send({
-      success: true,
-      products,
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(400).send({
-      success: false,
-      message: "error while geting frequently purchase product",
-      error,
-    });
-  }
-};
+// export const frequentlyPurchaseProductController = async (req, res) => {
+//   try {
+//     const { uid } = req.params;
+//     const products = await productModel
+//       .find({
+//         // category: cid,
+//         _id: { $ne: uid },
+//       })
+//       .select("-photo")
+//       .limit(3)
+//       .populate("category");
+//     res.status(200).send({
+//       success: true,
+//       products,
+//     });
+//   } catch (error) {
+//     console.log(error);
+//     res.status(400).send({
+//       success: false,
+//       message: "error while geting frequently purchase product",
+//       error,
+//     });
+//   }
+// };
 
 // get product by catgory
 export const productCategoryController = async (req, res) => {

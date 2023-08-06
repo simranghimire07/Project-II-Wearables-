@@ -56,8 +56,6 @@ const ProductDetails = () => {
             className="card-img-top"
             alt={product.name}
            
-            //  height={"300PX"}
-            // width={"300px"}
           />
         </div>
         <div className="col-md-6 product-details-info">
@@ -90,7 +88,7 @@ const ProductDetails = () => {
       </div>
       <hr />
             {/* Frequently purchase product */}
-            <div className="row container frequently-purchase-products">
+            {/* <div className="row container frequently-purchase-products">
         <h4>Frequently Purchase Products ➡️</h4>
         {frequentProducts.length < 1 && (
           <p className="text-center">No Frequently Purchase Products Found!</p>
@@ -141,7 +139,7 @@ const ProductDetails = () => {
           ))}
         </div>
       </div>
-      <hr/>
+      <hr/> */}
       <div className="row container similar-products">
         <h4>Similar Products ➡️</h4>
         {relatedProducts.length < 1 && (

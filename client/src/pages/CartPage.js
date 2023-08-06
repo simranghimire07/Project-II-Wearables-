@@ -11,6 +11,8 @@ import "../styles/CartStyles.css";
 import KhaltiCheckout from "khalti-checkout-web";
 import config from "./../components/Khalti/KhaltiConfig";
 import myKey from "./../components/Khalti/KhaltiKey";
+import {v4 as uuidv4} from 'uuid';
+
 
 const CartPage = () => {
   const [auth, setAuth] = useAuth();
@@ -20,6 +22,21 @@ const CartPage = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+
+  const getTotalPriceOnly = ()=>{
+
+    try{
+      let total = 0;
+
+      cart?.map((item) => {
+        total = total + item.price;
+      });
+      return total;
+    }catch(e){
+      console.error(e);
+      return 0;
+    }
+  }
   //total price
   const totalPrice = () => {
     try {
@@ -47,16 +64,46 @@ const CartPage = () => {
       console.log(error);
     }
   };
-  // const checkout = new KhaltiCheckout(config);
 
-  // const buttonStyles = {
-  //   backgroundColor: "purple",
-  //   padding: "10px",
-  //   color: "white",
-  //   cursor: "pointer",
-  //   fontWeight: "bold",
-  //   border: "1px solid white",
-  // };
+
+  const buttonStyles = {
+    backgroundColor: "purple",
+    padding: "10px",
+    color: "white",
+    cursor: "pointer",
+    fontWeight: "bold",
+    border: "1px solid white",
+  };
+
+
+  const checkout = async(amount)=>{
+    const REDIRECT_URL = "http://localhost:3000/success";
+    const WEBSITE = "http://localhost:3000";
+    const UUID = uuidv4();
+    const PAYLOAD = {
+      "return_url": `${REDIRECT_URL}`,
+      "website_url": `${WEBSITE}`,
+      "amount": parseInt(amount),
+      "purchase_order_id": `test123`,
+      "purchase_order_name": "test",
+      "customer_info": {
+          "name": `${auth?.user?.name}`,
+          "email": `${auth?.user?.email}`,
+          "phone": `9861503274`
+      },
+    }
+    console.log("Request to khalti sent")
+
+    const response = await axios.post(`http://localhost:8080/khalti-api`,PAYLOAD);
+    if(response.status == 200){
+      const data = response.data.data
+      
+      const PAYMENT_URL = data.payment_url
+      window.open(PAYMENT_URL,"_self")
+
+    }
+
+  }
 
   // const verifyCheckout =
    
@@ -211,18 +258,33 @@ const CartPage = () => {
                 )}
               </div> */}
 
-              {/* Khalti
+              {/* Khalti */}
               <div>
-                < Sample totalPrice = {totalPrice()}/>
+              {auth?.token ? (
                     <button
-                        onClick={() => checkout.show({ amount: 10000 })}
-                        style={buttonStyles}
+                    onClick={() => checkout(
+                      (parseFloat(getTotalPriceOnly()) * 100)
+                    )}
+                    style={buttonStyles}
+                >
+                    Pay Via Khalti
+                </button>
+                  ) : (
+                    <button
+                      className="btn btn-outline-danger"
+                      onClick={() =>
+                        navigate("/login", {
+                          state: "/cart",
+                        })
+                      }
                     >
-                        Pay Via Khalti
+                      Please Login to use khalti
                     </button>
-                </div>
+                  )}
+              </div>
+
         
-              Khalti */}
+              {/* Khalti */}
 
             </div>
           </div>
